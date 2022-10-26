@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# images
+!*/static/media/.gitkeep
+*/static/media/*
+
 # Distribution / packaging
 .Python
 build/
