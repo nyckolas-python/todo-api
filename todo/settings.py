@@ -10,12 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-x@(-n!hl89*_5@a&ug*2spzrwbc1rh=om_f8l=d@k8$mk1@fn5'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,27 +86,23 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
-
 #     'default': {
-
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ["POSTGRES_DB"],
-#         'USER': os.environ["POSTGRES_USER"],
-#         'PASSWORD': os.environ["POSTGRES_PASSWORD"],
-#         'HOST': os.environ["DB_HOST"],
-#         'PORT': '5432'
-
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
-
 # }
+
+DATABASES = {
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('POSTGRES_DB', default='todo_api_dev'),
+        'USER': os.getenv('POSTGRES_USER', default='todo_api_dev'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='pass'),
+        'HOST': os.getenv('POSTGRES_HOST', default='postgres'),
+        'PORT': "5432"
+        }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
