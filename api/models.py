@@ -36,7 +36,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     task_images = models.ManyToManyField(
-        Image, verbose_name="Attached images:")
+        Image, verbose_name="Attached images:", blank=True)
     
     def _get_status_display(self):
         status_display = [_ for s,_ in self.status_choices if s==self.status]
