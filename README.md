@@ -16,4 +16,6 @@ use command to give permissions `sudo chmod -R 777 ./pgadmin`
 6. If you have error /data/db: permission denied failed to solve run: `sudo chmod -R 777 ./data/db`
 7. Run migrations by `docker exec -it todo_api_web python manage.py migrate`
 8. Run to create admin user `docker exec -it todo_api_web python manage.py createsuperuser` 
-9. Open http://localhost:8080/admin/ in browser and auth with user created at step 9
+9. Open http://localhost:8080/admin/ in browser and auth with user created at step 8
+10. Open http://127.0.0.1:8080/api/v1/task/ in browser login and create First task
+11. Open http://127.0.0.1:8080/swagger/ in browser to see swagger documentation
