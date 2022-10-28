@@ -20,6 +20,7 @@ from api.serializers import UserSerializer, TaskSerializer, TaskSerializerExecut
 from api.models import Task, Image
 from api.permissions import IsOwner, IsExecutor
 from api.servises import is_task_executor, is_task_owner
+from api.tasks import send_email_task
 
 # Create your views here.
 @csrf_exempt
@@ -84,6 +85,8 @@ class TaskListView(ListCreateAPIView):
     filterset_fields = ['status']
     
     def perform_create(self, serializer):
+        # you must specify EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, before use:
+        # send_email_task(subject='First email', message='First email', receivers=['nyckolas.python@gmail.com'])
         serializer.save(user=self.request.user)
 
 

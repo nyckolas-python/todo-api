@@ -12,6 +12,8 @@ services:
     build: .
     ports:
       - "8080:8080"
+      - "465:465"
+      - "587:587"
     command: honcho start
     volumes:
       - .:/todo
@@ -92,8 +94,11 @@ services:
     volumes:
       - .:/todo
     environment:
-      DEBUG: 1
-      SECRET_KEY: django-insecure-x@(-n!hl89*_5@a&ug*2spzrwbc1rh=om_f8l=d@k8$mk1@fn5
+      EMAIL_HOST: smtp.ukr.net
+      EMAIL_PORT: 465
+      EMAIL_HOST_USER: nyckolas.top9@ukr.net
+      EMAIL_HOST_PASSWORD: 2dqIvhoICxG8SaVr
+      DEFAULT_FROM_EMAIL: nyckolas.top9@ukr.net
 
 
 volumes:
